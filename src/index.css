@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&family=Playfair+Display:wght@700;800&display=swap");
+
+body.theme-minimal {
+  font-family: "Inter", sans-serif;
+}
+
+body.theme-dark {
+  font-family: "Playfair Display", serif;
+}
+
+body.theme-colorful {
+  font-family: "Pacifico", cursive;
+}
+
+.font-sans {
+  font-family: "Inter", sans-serif;
+}
+
+.font-pacifico {
+  font-family: "Pacifico", cursive;
+}
