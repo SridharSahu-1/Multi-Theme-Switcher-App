@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../../contexts/ThemeContext";
 import { Header } from "../Header";
+import { Sidebar } from "../Sidebar/Sidebar";
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -18,7 +19,12 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
         transition={{ duration: 0.7 }}
         className={`pt-20 transition-colors ${styles.layout.bg} ${styles.layout.text} ${styles.layout.font}`}
       >
-        <div className={styles.layout.container}>{children}</div>
+        <div className={styles.layout.container}>
+          {activeTheme === 'dark' && <Sidebar />}
+          <div className={activeTheme === 'dark' ? 'flex-1 p-6' : ''}>
+            {children}
+          </div>
+        </div>
       </motion.main>
     </>
   );
