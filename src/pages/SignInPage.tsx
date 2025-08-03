@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { signIn, getAuthErrorMessage } from '../firebase/auth';
-import { goTo } from '../store/slices/navigationSlice';
+import React, { useState } from "react";
+import { useAppSelector, useAppDispatch } from "../store/helpers";
+import { signIn, getAuthErrorMessage } from "../firebase/auth";
+import { goTo } from "../store/slices/navigationSlice";
 
 const SignInPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const { styles } = useAppSelector((state) => state.theme);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
       await signIn(email, password);
-      dispatch(goTo('home'));
+      dispatch(goTo("home"));
     } catch (err) {
       setError(getAuthErrorMessage(err));
     }
@@ -53,10 +53,7 @@ const SignInPage: React.FC = () => {
         </form>
 
         <div className={theme.divider}>or</div>
-        <button
-          className={theme.link}
-          onClick={() => dispatch(goTo('signup'))}
-        >
+        <button className={theme.link} onClick={() => dispatch(goTo("signup"))}>
           Create an Account
         </button>
       </div>
@@ -65,4 +62,3 @@ const SignInPage: React.FC = () => {
 };
 
 export default SignInPage;
-

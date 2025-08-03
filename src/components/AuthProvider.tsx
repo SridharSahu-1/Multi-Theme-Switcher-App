@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase/config';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { setCurrentUser } from '../store/slices/authSlice';
+import React, { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase/config";
+import { useAppDispatch, useAppSelector } from "../store/helpers";
+import { setCurrentUser } from "../store/slices/authSlice";
 
 interface AuthProviderProps {
   children: React.ReactNode;

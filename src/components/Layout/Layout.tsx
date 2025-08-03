@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "../../store/helpers";
 import { Header } from "../Header";
 import { Sidebar } from "../Sidebar/Sidebar";
 
@@ -20,8 +20,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
         className={`pt-20 transition-colors ${styles.layout.bg} ${styles.layout.text} ${styles.layout.font}`}
       >
         <div className={styles.layout.container}>
-          {activeTheme === 'dark' && <Sidebar />}
-          <div className={activeTheme === 'dark' ? 'flex-1 p-6' : ''}>
+          {activeTheme === "dark" && <Sidebar />}
+          <div className={activeTheme === "dark" ? "flex-1 p-6" : ""}>
             {children}
           </div>
         </div>

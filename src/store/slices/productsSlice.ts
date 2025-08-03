@@ -1,26 +1,32 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { Product } from '../../models/Product';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import type { Product } from "../../models/Product";
 
 interface ProductsState {
   products: Product[];
   loading: boolean;
+  loadingMore: boolean;
   error: string | null;
+  hasMore: boolean;
+  page: number;
 }
 
 const initialState: ProductsState = {
   products: [],
   loading: false,
+  loadingMore: false,
   error: null,
+  hasMore: true,
+  page: 1,
 };
 
-export const fetchProducts = createAsyncThunk('products/fetch', async () => {
-  const response = await fetch('https://fakestoreapi.com/products?limit=8');
-  if (!response.ok) throw new Error('Failed to fetch products');
+export const fetchProducts = createAsyncThunk("products/fetch", async () => {
+  const response = await fetch("https://fakestoreapi.com/products?limit=8");
+  if (!response.ok) throw new Error("Failed to fetch products");
   return (await response.json()) as Product[];
 });
 
 const productsSlice = createSlice({
-  name: 'products',
+  name: "products",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -35,7 +41,7 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Error fetching products';
+        state.error = action.error.message || "Error fetching products";
       });
   },
 });

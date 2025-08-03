@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useAppSelector } from '../store/hooks';
+import React from "react";
+import { motion } from "framer-motion";
+import { useAppSelector } from "../store/helpers";
 
 export const ContactPage: React.FC = () => {
   const { styles } = useAppSelector((state) => state.theme);
@@ -14,12 +14,14 @@ export const ContactPage: React.FC = () => {
 
       <div className={`max-w-2xl mx-auto ${styles.contact.form}`}>
         <form className="space-y-6">
-          {['name', 'email'].map((field) => (
+          {["name", "email"].map((field) => (
             <input
               key={field}
-              type={field === 'email' ? 'email' : 'text'}
+              type={field === "email" ? "email" : "text"}
               name={field}
-              placeholder={`Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+              placeholder={`Your ${
+                field.charAt(0).toUpperCase() + field.slice(1)
+              }`}
               className={styles.contact.input}
             />
           ))}

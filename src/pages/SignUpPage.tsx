@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { useAppSelector, useAppDispatch } from "../store/helpers";
 import { signUp, getAuthErrorMessage } from "../firebase/auth";
 import { goTo } from "../store/slices/navigationSlice";
 
