@@ -38,6 +38,16 @@ export interface ThemeStyles {
     input: string;
     button: string;
   };
+  auth: {
+    container: string;
+    form: string;
+    title: string;
+    input: string;
+    button: string;
+    link: string;
+    error: string;
+    divider: string;
+  };
 }
 
 export const themes: Record<Theme, ThemeStyles> = {
@@ -82,6 +92,16 @@ export const themes: Record<Theme, ThemeStyles> = {
         "w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500",
       button:
         "bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 w-full",
+    },
+    auth: {
+      container: "min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8",
+      form: "max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-md border border-gray-200",
+      title: "text-3xl font-bold text-center text-gray-900 mb-6",
+      input: "w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
+      button: "w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 font-semibold",
+      link: "text-blue-600 hover:text-blue-800 underline cursor-pointer",
+      error: "text-red-600 text-sm mt-1",
+      divider: "text-gray-500 text-center my-4",
     },
   },
   dark: {
@@ -129,6 +149,16 @@ export const themes: Record<Theme, ThemeStyles> = {
       button:
         "border-2 border-teal-400 text-teal-400 py-3 px-8 rounded-full w-full hover:bg-teal-400 hover:text-gray-900",
     },
+    auth: {
+      container: "min-h-screen flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8",
+      form: "max-w-md w-full space-y-8 bg-gray-800 p-8 rounded-lg border border-gray-700",
+      title: "text-3xl font-bold text-center text-gray-100 mb-6",
+      input: "w-full p-3 bg-gray-700 border border-gray-600 rounded-md focus:ring-2 focus:ring-teal-400",
+      button: "w-full border-2 border-teal-400 text-teal-400 py-3 px-4 rounded-md hover:bg-teal-400 hover:text-gray-900 font-bold",
+      link: "text-teal-400 hover:text-teal-600 underline cursor-pointer",
+      error: "text-red-500 text-sm mt-1",
+      divider: "text-gray-400 text-center my-4",
+    },
   },
   colorful: {
     bodyClass: "theme-colorful font-pacifico",
@@ -171,6 +201,16 @@ export const themes: Record<Theme, ThemeStyles> = {
         "w-full p-3 border border-fuchsia-300 rounded-lg focus:ring-2 focus:ring-fuchsia-500 bg-white/50",
       button:
         "bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white py-3 px-8 rounded-full w-full hover:scale-105",
+    },
+    auth: {
+      container: "min-h-screen flex items-center justify-center bg-gradient-to-br from-rose-100 to-teal-100 py-12 px-4 sm:px-6 lg:px-8",
+      form: "max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-xl border border-fuchsia-200",
+      title: "text-3xl font-bold text-center text-rose-500 mb-6",
+      input: "w-full p-3 border border-fuchsia-300 rounded-lg focus:ring-2 focus:ring-fuchsia-500 bg-white/50",
+      button: "w-full bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white py-3 px-4 rounded-lg hover:scale-105 font-bold",
+      link: "text-fuchsia-600 hover:text-pink-600 underline cursor-pointer",
+      error: "text-red-600 text-sm mt-1",
+      divider: "text-indigo-500 text-center my-4",
     },
   },
 };

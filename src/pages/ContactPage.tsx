@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from '../contexts/ThemeContext';
+import { useAppSelector } from '../store/hooks';
 
 export const ContactPage: React.FC = () => {
-  const { styles } = useTheme();
+  const { styles } = useAppSelector((state) => state.theme);
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

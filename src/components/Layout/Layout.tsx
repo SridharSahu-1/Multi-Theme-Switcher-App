@@ -1,13 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "../../contexts/ThemeContext";
+import { useAppSelector } from "../../store/hooks";
 import { Header } from "../Header";
 import { Sidebar } from "../Sidebar/Sidebar";
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { styles, activeTheme } = useTheme();
+  const { styles, activeTheme } = useAppSelector((state) => state.theme);
 
   return (
     <>

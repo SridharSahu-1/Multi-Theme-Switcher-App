@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { useFetch } from '../hooks/useFetch';
-import { useTheme } from '../contexts/ThemeContext';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { fetchProducts } from '../store/slices/productsSlice';
 import { Loader } from '../components/common/Loader';
 import { Card } from '../components/Card';
-import type { Product } from '../models/Product';
 
 export const HomePage: React.FC = () => {
-  const { data: products, loading, error } = useFetch<Product[]>(
-    'https://fakestoreapi.com/products?limit=8'
-  );
-  const { styles } = useTheme();
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector((state) => state.products);
+  const { styles } = useAppSelector((state) => state.theme);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   if (loading) return <Loader />;
   return (
@@ -27,7 +29,7 @@ export const HomePage: React.FC = () => {
 
       <div className={`mt-12 ${styles.homepage.grid}`}>
         <AnimatePresence>
-          {products?.map((p) => (
+          {products.map((p) => (
             <Card key={p.id} product={p} />
           ))}
         </AnimatePresence>

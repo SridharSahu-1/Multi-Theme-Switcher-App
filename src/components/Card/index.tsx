@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import type { Product } from "../../models/Product";
-import { useTheme } from "../../contexts/ThemeContext";
+import { useAppSelector } from "../../store/hooks";
 
 interface CardProps {
   product: Product;
 }
 
 export const Card: React.FC<CardProps> = ({ product }) => {
-  const { styles } = useTheme();
+  const { styles } = useAppSelector((state) => state.theme);
 
   return (
     <motion.div

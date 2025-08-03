@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "../../contexts/ThemeContext";
-import { useNavigation } from "../../contexts/NavigationContext";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { setTheme } from "../../store/slices/themeSlice";
+import { goTo } from "../../store/slices/navigationSlice";
 import type { Theme } from "../../theme/themes";
 
 export const Header: React.FC = () => {
-  const { activeTheme, setTheme, styles } = useTheme();
-  const { goTo } = useNavigation();
+  const dispatch = useAppDispatch();
+  const { activeTheme, styles } = useAppSelector((state) => state.theme);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const themeOptions: { id: Theme; label: string }[] = [
@@ -22,7 +23,7 @@ export const Header: React.FC = () => {
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <h1
           className={`${styles.header.logo} cursor-pointer`}
-          onClick={() => goTo("home")}
+          onClick={() => dispatch(goTo("home"))}
         >
           Hipster Inc.
         </h1>
@@ -31,12 +32,26 @@ export const Header: React.FC = () => {
           {(["home", "about", "contact"] as const).map((page) => (
             <button
               key={page}
-              onClick={() => goTo(page)}
+              onClick={() => dispatch(goTo(page))}
               className="hover:opacity-80"
             >
               {page.charAt(0).toUpperCase() + page.slice(1)}
             </button>
           ))}
+          <div className="flex space-x-4">
+            <button
+              onClick={() => dispatch(goTo("signin"))}
+              className="hover:opacity-80"
+            >
+              Sign In
+            </button>
+            <button
+              onClick={() => dispatch(goTo("signup"))}
+              className="hover:opacity-80"
+            >
+              Sign Up
+            </button>
+          </div>
         </nav>
 
         <div className="relative">
@@ -75,7 +90,7 @@ export const Header: React.FC = () => {
                     <button
                       key={id}
                       onClick={() => {
-                        setTheme(id);
+                        dispatch(setTheme(id));
                         setMenuOpen(false);
                       }}
                       className={`w-full text-left px-4 py-2 text-sm ${

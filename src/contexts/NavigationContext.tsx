@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 
-export type Page = 'home' | 'about' | 'contact';
+export type Page = 'home' | 'about' | 'contact' | 'signin' | 'signup';
 
 interface NavigationContextProps {
   current: Page;
