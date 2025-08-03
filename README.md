@@ -182,13 +182,6 @@ The theme switcher in the header allows instant switching between:
 
 
 ## 🔒 Security Features
-### Security Headers
-- Content Security Policy (CSP)
-- X-Content-Type-Options: nosniff
-- X-Frame-Options: DENY
-- X-XSS-Protection: 1; mode=block
-- Referrer-Policy: strict-origin-when-cross-origin
-
 ### Authentication Security
 - Firebase Authentication with secure token handling
 - Protected routes requiring authentication
