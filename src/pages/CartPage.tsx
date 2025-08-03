@@ -20,7 +20,7 @@ export const CartPage: React.FC = () => {
 
   const handleProceedToPayment = () => {
     if (currentUser) {
-      dispatch(goTo("payment"));
+      navigate("/payment")
     } else {
       alert("Please sign in to proceed to payment.");
       dispatch(goTo("signin"));

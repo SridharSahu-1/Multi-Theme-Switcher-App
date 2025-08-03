@@ -68,7 +68,7 @@ export const ProductPage: React.FC = () => {
   }
 
   const handleAddToCart = () => {
-    dispatch(addToCart({ ...product, quantity }));
+    dispatch(addToCart(product));
   };
 
   const handleProceedToPayment = () => {

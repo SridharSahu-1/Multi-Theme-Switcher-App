@@ -31,7 +31,7 @@ const SignUpPage: React.FC = () => {
     try {
       await signUp(email, password);
       dispatch(goTo("home"));
-    } catch (err) {
+    } catch (err: any) {
       setError(getAuthErrorMessage(err));
     }
   };
