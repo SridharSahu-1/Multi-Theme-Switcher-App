@@ -1,6 +1,6 @@
-import React from 'react';
-import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface PaginationProps {
   currentPage: number;
@@ -35,9 +35,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       // Always show first page
       pages.push(1);
 
-      if (currentPage > 3) {
-        pages.push('...');
-      }
+      if (currentPage > 3) pages.push("...");
 
       // Show pages around current page
       const start = Math.max(2, currentPage - 1);
@@ -47,14 +45,10 @@ export const Pagination: React.FC<PaginationProps> = ({
         pages.push(i);
       }
 
-      if (currentPage < totalPages - 2) {
-        pages.push('...');
-      }
+      if (currentPage < totalPages - 2) pages.push("...");
 
       // Always show last page
-      if (totalPages > 1) {
-        pages.push(totalPages);
-      }
+      if (totalPages > 1) pages.push(totalPages);
     }
 
     return pages;
@@ -75,12 +69,10 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   const handlePageClick = (page: number | string) => {
-    if (typeof page === 'number' && page !== currentPage && !loading) {
+    if (typeof page === "number" && page !== currentPage && !loading) {
       onPageChange(page);
     }
   };
-
-  // if (totalPages <= 1) return null;
 
   return (
     <motion.div
@@ -109,8 +101,9 @@ export const Pagination: React.FC<PaginationProps> = ({
 
       {/* Page info */}
       <div className="text-sm text-gray-600">
-        Showing {Math.min((currentPage - 1) * itemsPerPage + 1, totalItems)} to{' '}
-        {Math.min(currentPage * itemsPerPage, totalItems)} of {totalItems} results
+        Showing {Math.min((currentPage - 1) * itemsPerPage + 1, totalItems)} to{" "}
+        {Math.min(currentPage * itemsPerPage, totalItems)} of {totalItems}{" "}
+        results
       </div>
 
       {/* Pagination controls */}
@@ -127,7 +120,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         {/* Page numbers */}
         {visiblePages.map((page, index) => (
           <React.Fragment key={index}>
-            {page === '...' ? (
+            {page === "..." ? (
               <div className="flex items-center justify-center w-8 h-8">
                 <MoreHorizontal size={16} className="text-gray-400" />
               </div>
@@ -139,8 +132,8 @@ export const Pagination: React.FC<PaginationProps> = ({
                 disabled={loading}
                 className={`flex items-center justify-center w-8 h-8 rounded border transition-colors ${
                   page === currentPage
-                    ? 'bg-blue-500 text-white border-blue-500'
-                    : 'hover:bg-gray-50 disabled:opacity-50'
+                    ? "bg-blue-500 text-white border-blue-500"
+                    : "hover:bg-gray-50 disabled:opacity-50"
                 } disabled:cursor-not-allowed`}
               >
                 {page}

@@ -17,8 +17,8 @@ const SignInPage: React.FC = () => {
 
     try {
       await signIn(email, password);
-      navigate("/home")
-    } catch (err) {
+      navigate("/home");
+    } catch (err: { message: string; code: string }) {
       setError(getAuthErrorMessage(err));
     }
   };

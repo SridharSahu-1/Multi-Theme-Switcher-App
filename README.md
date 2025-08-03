@@ -135,7 +135,6 @@ npm run preview
 ```
 
 ## 🎨 Theme System
-
 ### Theme Structure
 Each theme defines comprehensive styling for:
 - Layout containers and spacing
@@ -166,7 +165,6 @@ The theme switcher in the header allows instant switching between:
    - Playful colors and animations
 
 ## 🛠️ Technology Stack
-
 ### Frontend
 - **React 19** - Latest React with concurrent features
 - **TypeScript** - Type-safe development
@@ -182,10 +180,6 @@ The theme switcher in the header allows instant switching between:
 - **Fake Store API** - Product data source
 - **Axios** - HTTP client for API requests
 
-### Development Tools
-- **ESLint** - Code linting
-- **TypeScript ESLint** - TypeScript-specific linting
-- **Vite Dev Server** - Development server with HMR
 
 ## 🔒 Security Features
 ### Security Headers
@@ -215,7 +209,6 @@ Key responsive features:
 - Optimized images and content loading
 
 ## 🎯 API Integration
-
 ### Fake Store API
 - **Base URL**: `https://fakestoreapi.com`
 - **Endpoints Used**:
@@ -227,7 +220,6 @@ Key responsive features:
   - Data caching and optimization
 
 ## 🧪 Testing & Quality Assurance
-
 ### Code Quality
 - TypeScript strict mode enabled
 - ESLint with React and TypeScript rules
@@ -240,46 +232,7 @@ Key responsive features:
 - Image optimization
 - Bundle size optimization
 
-## 🚀 Deployment
-
-### Supported Platforms
-- **Vercel** (Recommended)
-- **Netlify**
-- **Firebase Hosting**
-- **Static hosting services**
-
 ### Environment Variables
 Ensure all required environment variables are set in your deployment platform:
 - Firebase configuration variables
 - API endpoints and keys
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- **Hipster Inc.** - Project requirements and specifications
-- **Fake Store API** - Product data source
-- **Firebase** - Authentication services
-- **Tailwind CSS** - Styling framework
-- **Framer Motion** - Animation library
-
-## 📞 Support
-
-For support and questions:
-- Email: hr@hipster-inc.com
-- Phone: +65 8231 4107
-- Address: 75 Ayer Rajah Crescent, #01-04, Singapore 139953
-
----
-
-**Built with ❤️ for Hipster Inc. Assignment**

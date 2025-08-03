@@ -16,6 +16,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { fetchProductById } from "../services/api";
+import type { Product } from "../models/Product";
 
 export const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -24,7 +25,7 @@ export const ProductPage: React.FC = () => {
   const { products } = useAppSelector((state) => state.products);
   const { currentUser } = useAppSelector((state) => state.auth);
 
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -68,7 +69,6 @@ export const ProductPage: React.FC = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product, quantity }));
-    // Show success message or animation here
   };
 
   const handleProceedToPayment = () => {
@@ -89,7 +89,6 @@ export const ProductPage: React.FC = () => {
     setIsInWishlist(!isInWishlist);
   };
 
-  // Mock additional images (in real app, these would come from API)
   const productImages = [product.image, product.image, product.image];
 
   const features = [
@@ -212,7 +211,7 @@ export const ProductPage: React.FC = () => {
               })}
             </div>
           </div>
-          
+
           {/* Thumbnail Images */}
           <div className="flex space-x-2">
             {productImages.map((image, index) => (

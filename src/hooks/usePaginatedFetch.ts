@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { apiService } from '../services/api';
-import type { Product } from '../models/Product';
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { apiService } from "../services/api";
+import type { Product } from "../models/Product";
 
 interface UsePaginatedFetchState {
   displayData: Product[];
@@ -17,7 +17,9 @@ interface UsePaginatedFetchActions {
   setItemsPerPage: (items: number) => void;
 }
 
-export function usePaginatedFetch(initialItemsPerPage: number = 10): UsePaginatedFetchState & UsePaginatedFetchActions {
+export function usePaginatedFetch(
+  initialItemsPerPage: number = 10
+): UsePaginatedFetchState & UsePaginatedFetchActions {
   const [allData, setAllData] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +29,7 @@ export function usePaginatedFetch(initialItemsPerPage: number = 10): UsePaginate
 
   // Calculate derived state
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  
+
   // Get current page data for display
   const displayData = useMemo(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -40,13 +42,14 @@ export function usePaginatedFetch(initialItemsPerPage: number = 10): UsePaginate
     const loadInitialData = async () => {
       setLoading(true);
       setError(null);
-      
+
       try {
         const allProducts = await apiService.fetchAllProducts();
         setAllData(allProducts);
         setTotalItems(allProducts.length);
       } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : 'Failed to fetch initial data';
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to fetch initial data";
         setError(errorMessage);
       } finally {
         setLoading(false);
@@ -57,19 +60,21 @@ export function usePaginatedFetch(initialItemsPerPage: number = 10): UsePaginate
   }, []);
 
   // Go to specific page
-  const goToPage = useCallback((page: number) => {
-    if (page < 1 || page > totalPages) return;
-    setCurrentPage(page);
-  }, [totalPages]);
+  const goToPage = useCallback(
+    (page: number) => {
+      if (page < 1 || page > totalPages) return;
+      setCurrentPage(page);
+    },
+    [totalPages]
+  );
 
   // Update items per page
   const setItemsPerPageHandler = useCallback((items: number) => {
     setItemsPerPage(items);
-    setCurrentPage(1); // Reset to first page
+    setCurrentPage(1);
   }, []);
 
   return {
-    // State
     displayData,
     loading,
     error,
@@ -77,7 +82,6 @@ export function usePaginatedFetch(initialItemsPerPage: number = 10): UsePaginate
     totalPages,
     totalItems,
     itemsPerPage,
-    // Actions
     goToPage,
     setItemsPerPage: setItemsPerPageHandler,
   };

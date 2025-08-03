@@ -6,7 +6,8 @@ import { usePaginatedFetch } from "../hooks/usePaginatedFetch";
 import { Pagination } from "../components/Pagination";
 import { Loader } from "../components/common/Loader";
 import { addToCart } from "../store/slices/cartSlice";
-import { ShoppingCart, Star, Eye, Heart, Filter } from "lucide-react";
+import { ShoppingCart, Star, Eye, Filter } from "lucide-react";
+import type { Product } from "../models/Product";
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export const HomePage: React.FC = () => {
 
   if (loading && displayData.length === 0) return <Loader />;
 
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: Product) => {
     dispatch(addToCart(product));
   };
 
@@ -141,7 +142,7 @@ export const HomePage: React.FC = () => {
                     >
                       {product.title}
                     </h3>
-                    <p className={`${styles.card.description} line-clamp-2`}>
+                    <p className={`${styles.card.description} line-clamp`}>
                       {product.description}
                     </p>
                   </div>
