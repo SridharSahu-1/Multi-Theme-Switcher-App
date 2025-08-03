@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { useAppSelector, useAppDispatch } from "../../store/helpers";
 import { setTheme } from "../../store/slices/themeSlice";
 import { goTo } from "../../store/slices/navigationSlice";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/config";
 import type { Theme } from "../../theme/themes";
 
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const { activeTheme, styles } = useAppSelector((state) => state.theme);
+  const { items } = useAppSelector((state) => state.cart);
+  const { currentUser } = useAppSelector((state) => state.auth);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const cartItemCount = items.reduce((sum, item) => sum + item.quantity, 0);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      dispatch(goTo("home"));
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
 
   const themeOptions: { id: Theme; label: string }[] = [
     { id: "minimal", label: "Minimalist Light" },
@@ -38,19 +53,49 @@ export const Header: React.FC = () => {
               {page.charAt(0).toUpperCase() + page.slice(1)}
             </button>
           ))}
+          <>
+            <button
+              onClick={() => dispatch(goTo("cart"))}
+              className="hover:opacity-80 relative flex items-center"
+            >
+              <svg
+                className="w-5 h-5 mr-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5M17 21a2 2 0 100-4 2 2 0 000 4zM9 21a2 2 0 100-4 2 2 0 000 4z"
+                />
+              </svg>
+              Cart ({cartItemCount})
+              {cartItemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                  {cartItemCount}
+                </span>
+              )}
+            </button>
+          </>
           <div className="flex space-x-4">
-            <button
-              onClick={() => dispatch(goTo("signin"))}
-              className="hover:opacity-80"
-            >
-              Sign In
-            </button>
-            <button
-              onClick={() => dispatch(goTo("signup"))}
-              className="hover:opacity-80"
-            >
-              Sign Up
-            </button>
+            {currentUser ? (
+              <>
+                <button onClick={handleLogout} className="hover:opacity-80">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => dispatch(goTo("signin"))}
+                  className="hover:opacity-80"
+                >
+                  Signin
+                </button>
+              </>
+            )}
           </div>
         </nav>
 

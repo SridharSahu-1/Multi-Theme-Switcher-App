@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import type { Product } from '../../models/Product';
-import { useAppSelector } from '../../store/hooks';
+import React from "react";
+import { motion } from "framer-motion";
+import type { Product } from "../../models/Product";
+import { useAppSelector } from "../../store/helpers";
 
 interface CardProps {
   product: Product;
@@ -16,7 +16,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
-      transition={{ duration: 0.5, type: 'spring' }}
+      transition={{ duration: 0.5, type: "spring" }}
       className={`overflow-hidden transition-all ${styles.card.container}`}
     >
       <div className="aspect-square w-full overflow-hidden">
