@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
+import { RouterProvider } from 'react-router-dom';
 import { AuthProvider } from "./components/AuthProvider";
-import { Layout } from "./components/Layout/Layout";
-import { PageRenderer } from "./components/common/PageRenderer";
 import { useAppSelector } from "./store/helpers";
+import { router } from './router';
 
 export const App: React.FC = () => {
   const { styles } = useAppSelector((state) => state.theme);
@@ -13,9 +13,7 @@ export const App: React.FC = () => {
 
   return (
     <AuthProvider>
-      <Layout>
-        <PageRenderer />
-      </Layout>
+      <RouterProvider router={router} />
     </AuthProvider>
   );
 };

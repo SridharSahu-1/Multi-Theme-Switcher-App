@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { useAppSelector, useAppDispatch } from "../store/helpers";
 import { signUp, getAuthErrorMessage } from "../firebase/auth";
 import { goTo } from "../store/slices/navigationSlice";
+import { useNavigate } from "react-router-dom";
 
 const SignUpPage: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const { styles } = useAppSelector((state) => state.theme);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +43,7 @@ const SignUpPage: React.FC = () => {
       <div className={theme.form}>
         <h2 className={theme.title}>Sign Up</h2>
 
-        <form onSubmit={handleSignUp}>
+        <form onSubmit={handleSignUp} className="flex flex-col gap-4">
           <input
             className={theme.input}
             type="email"
@@ -72,7 +75,7 @@ const SignUpPage: React.FC = () => {
         </form>
 
         <div className={theme.divider}>or</div>
-        <button className={theme.link} onClick={() => dispatch(goTo("signin"))}>
+        <button className={theme.link} onClick={() => navigate("/signin")}>
           Already have an account? Sign In
         </button>
       </div>

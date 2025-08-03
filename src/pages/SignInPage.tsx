@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useAppSelector, useAppDispatch } from "../store/helpers";
+import { useAppSelector } from "../store/helpers";
 import { signIn, getAuthErrorMessage } from "../firebase/auth";
-import { goTo } from "../store/slices/navigationSlice";
+import { useNavigate } from "react-router-dom";
 
 const SignInPage: React.FC = () => {
-  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const { styles } = useAppSelector((state) => state.theme);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +17,7 @@ const SignInPage: React.FC = () => {
 
     try {
       await signIn(email, password);
-      dispatch(goTo("home"));
+      navigate("/home")
     } catch (err) {
       setError(getAuthErrorMessage(err));
     }
@@ -29,7 +30,7 @@ const SignInPage: React.FC = () => {
       <div className={theme.form}>
         <h2 className={theme.title}>Sign In</h2>
 
-        <form onSubmit={handleSignIn}>
+        <form onSubmit={handleSignIn} className="flex flex-col gap-4">
           <input
             className={theme.input}
             type="email"
@@ -53,7 +54,7 @@ const SignInPage: React.FC = () => {
         </form>
 
         <div className={theme.divider}>or</div>
-        <button className={theme.link} onClick={() => dispatch(goTo("signup"))}>
+        <button className={theme.link} onClick={() => navigate("/signup")}>
           Create an Account
         </button>
       </div>

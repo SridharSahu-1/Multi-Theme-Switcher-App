@@ -2,9 +2,11 @@ import React from "react";
 import { useAppSelector, useAppDispatch } from "../store/helpers";
 import { removeFromCart, updateQuantity } from "../store/slices/cartSlice";
 import { goTo } from "../store/slices/navigationSlice";
+import { useNavigate } from "react-router-dom";
 
 export const CartPage: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { items, total } = useAppSelector((state) => state.cart);
   const { currentUser } = useAppSelector((state) => state.auth);
 
@@ -27,12 +29,14 @@ export const CartPage: React.FC = () => {
 
   if (items.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div className="container flex flex-col justify-center items-center px-4 py-8">
         <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
         <p>Your cart is empty.</p>
         <button
-          onClick={() => dispatch(goTo("home"))}
-          className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
+          onClick={() => {
+            navigate("/home");
+          }}
+          className="mt-4 bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:scale-105"
         >
           Continue Shopping
         </button>

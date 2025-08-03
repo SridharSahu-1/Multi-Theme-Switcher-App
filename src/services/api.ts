@@ -25,4 +25,13 @@ export const apiService = {
     const response = await api.get<Product[]>("/products");
     return response.data;
   },
+  
+  // Fetch single product by ID
+  async fetchProductById(id: number): Promise<Product> {
+    const response = await api.get<Product>(`/products/${id}`);
+    return response.data;
+  },
 };
+
+// Export individual functions for easier imports
+export const { fetchAllProducts, fetchProductById } = apiService;

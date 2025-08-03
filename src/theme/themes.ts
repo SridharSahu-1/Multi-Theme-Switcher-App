@@ -60,14 +60,14 @@ export const themes: Record<Theme, ThemeStyles> = {
       dropdownBg: "bg-white",
     },
     layout: {
-      bg: "bg-gray-50 h-dvh",
+      bg: "bg-gray-50 min-h-screen",
       text: "text-gray-800",
       font: "font-sans",
       container: "container mx-auto px-4 py-24",
     },
     card: {
       container:
-        "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md",
+        "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md hover:scale-105",
       textContainer: "p-4",
       title: "text-lg font-semibold text-gray-800",
       description: "text-sm text-gray-600 mt-1",
@@ -94,12 +94,15 @@ export const themes: Record<Theme, ThemeStyles> = {
         "bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 w-full",
     },
     auth: {
-      container: "min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8",
+      container:
+        "flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8",
       form: "max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-md border border-gray-200",
       title: "text-3xl font-bold text-center text-gray-900 mb-6",
-      input: "w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
-      button: "w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 font-semibold",
-      link: "text-blue-600 hover:text-blue-800 underline cursor-pointer",
+      input:
+        "w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
+      button:
+        "w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 font-semibold",
+      link: "text-blue-600 hover:text-blue-800 underline cursor-pointer text-center w-full",
       error: "text-red-600 text-sm mt-1",
       divider: "text-gray-500 text-center my-4",
     },
@@ -113,10 +116,10 @@ export const themes: Record<Theme, ThemeStyles> = {
       dropdownBg: "bg-gray-800",
     },
     layout: {
-      bg: "bg-gray-900",
+      bg: "bg-gray-900 min-h-screen",
       text: "text-gray-100",
       font: "font-serif",
-      container: "flex",
+      container: "flex min-h-full",
     },
     card: {
       container:
@@ -150,12 +153,15 @@ export const themes: Record<Theme, ThemeStyles> = {
         "border-2 border-teal-400 text-teal-400 py-3 px-8 rounded-full w-full hover:bg-teal-400 hover:text-gray-900",
     },
     auth: {
-      container: "min-h-screen flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8",
+      container:
+        "flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8",
       form: "max-w-md w-full space-y-8 bg-gray-800 p-8 rounded-lg border border-gray-700",
       title: "text-3xl font-bold text-center text-gray-100 mb-6",
-      input: "w-full p-3 bg-gray-700 border border-gray-600 rounded-md focus:ring-2 focus:ring-teal-400",
-      button: "w-full border-2 border-teal-400 text-teal-400 py-3 px-4 rounded-md hover:bg-teal-400 hover:text-gray-900 font-bold",
-      link: "text-teal-400 hover:text-teal-600 underline cursor-pointer",
+      input:
+        "w-full p-3 bg-gray-700 border border-gray-600 rounded-md focus:ring-2 focus:ring-teal-400",
+      button:
+        "w-full border-2 border-teal-400 text-teal-400 py-3 px-4 rounded-md hover:bg-teal-400 hover:text-gray-900 font-bold",
+      link: "text-teal-400 hover:text-teal-600 underline cursor-pointer text-center w-full",
       error: "text-red-500 text-sm mt-1",
       divider: "text-gray-400 text-center my-4",
     },
@@ -169,7 +175,7 @@ export const themes: Record<Theme, ThemeStyles> = {
       dropdownBg: "bg-indigo-600",
     },
     layout: {
-      bg: "bg-gradient-to-br from-rose-100 to-teal-100",
+      bg: "bg-gradient-to-br from-rose-100 to-teal-100 min-h-screen",
       text: "text-gray-900",
       font: "font-pacifico",
       container: "container mx-auto px-4 py-24",
@@ -187,7 +193,7 @@ export const themes: Record<Theme, ThemeStyles> = {
       paragraph: "text-xl text-center text-indigo-800 mb-10",
       button:
         "bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white py-3 px-8 rounded-full mx-auto block cursor-pointer hover:scale-105",
-      grid: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8",
+      grid: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8",
     },
     about: {
       title: "text-6xl text-center text-rose-500 mb-8",
@@ -203,12 +209,15 @@ export const themes: Record<Theme, ThemeStyles> = {
         "bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white py-3 px-8 rounded-full w-full hover:scale-105",
     },
     auth: {
-      container: "min-h-screen flex items-center justify-center bg-gradient-to-br from-rose-100 to-teal-100 py-12 px-4 sm:px-6 lg:px-8",
+      container:
+        "flex items-center justify-center bg-gradient-to-br from-rose-100 to-teal-100 py-12 px-4 sm:px-6 lg:px-8",
       form: "max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-xl border border-fuchsia-200",
       title: "text-3xl font-bold text-center text-rose-500 mb-6",
-      input: "w-full p-3 border border-fuchsia-300 rounded-lg focus:ring-2 focus:ring-fuchsia-500 bg-white/50",
-      button: "w-full bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white py-3 px-4 rounded-lg hover:scale-105 font-bold",
-      link: "text-fuchsia-600 hover:text-pink-600 underline cursor-pointer",
+      input:
+        "w-full p-3 border border-fuchsia-300 rounded-lg focus:ring-2 focus:ring-fuchsia-500 bg-white/50",
+      button:
+        "w-full bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white py-3 px-4 rounded-lg hover:scale-105 font-bold",
+      link: "text-fuchsia-600 hover:text-pink-600 underline cursor-pointer text-center w-full",
       error: "text-red-600 text-sm mt-1",
       divider: "text-indigo-500 text-center my-4",
     },

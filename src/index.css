@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&family=Playfair+Display:wght@700;800&display=swap");
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* Theme-specific font families */
 body.theme-minimal {
   font-family: "Inter", sans-serif;
@@ -47,7 +59,7 @@ body.theme-colorful {
 /* Custom scrollbar styles */
 .scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: #9CA3AF #F3F4F6;
+  scrollbar-color: #9ca3af #f3f4f6;
 }
 
 .scrollbar-thin::-webkit-scrollbar {
@@ -56,23 +68,23 @@ body.theme-colorful {
 }
 
 .scrollbar-thin::-webkit-scrollbar-track {
-  background: #F3F4F6;
+  background: #f3f4f6;
   border-radius: 3px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #9CA3AF;
+  background: #9ca3af;
   border-radius: 3px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: #6B7280;
+  background: #6b7280;
 }
 
 .scrollbar-thumb-gray-400::-webkit-scrollbar-thumb {
-  background: #9CA3AF;
+  background: #9ca3af;
 }
 
 .scrollbar-track-gray-200::-webkit-scrollbar-track {
-  background: #E5E7EB;
+  background: #e5e7eb;
 }

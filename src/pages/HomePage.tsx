@@ -1,11 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useAppSelector } from "../store/helpers";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../store/helpers";
 import { usePaginatedFetch } from "../hooks/usePaginatedFetch";
 import { Pagination } from "../components/Pagination";
 import { Loader } from "../components/common/Loader";
+import { addToCart } from "../store/slices/cartSlice";
+import { ShoppingCart, Star, Eye, Heart, Filter } from "lucide-react";
 
 export const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { styles } = useAppSelector((state) => state.theme);
 
   const {
@@ -22,30 +27,68 @@ export const HomePage: React.FC = () => {
 
   if (loading && displayData.length === 0) return <Loader />;
 
+  const handleAddToCart = (product: any) => {
+    dispatch(addToCart(product));
+  };
+
+  const handleViewProduct = (productId: number) => {
+    navigate(`/product/${productId}`);
+  };
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {error && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-red-500 text-white p-4 rounded-md"
+          className="bg-red-500 text-white p-4 rounded-lg shadow-md"
         >
-          {error}
+          <div className="flex items-center space-x-2">
+            <span>⚠️</span>
+            <span>{error}</span>
+          </div>
         </motion.div>
       )}
 
-      {/* Header Section */}
+      {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center space-y-4"
+        className="text-center space-y-6 rounded-xl p-8"
       >
-        <h1 className={styles.homepage.title}>Our Products</h1>
-        <p className={styles.homepage.paragraph}>
-          Discover a curated selection of our finest products with smooth
-          pagination.
-        </p>
-        <button className={styles.homepage.button}>Shop Now</button>
+        <div className="space-y-4">
+          <h1 className={styles.homepage.title}>Discover Amazing Products</h1>
+          <p className={`${styles.homepage.paragraph} max-w-2xl mx-auto`}>
+            Explore our carefully curated collection of premium products
+            designed to enhance your lifestyle. Quality, style, and innovation
+            in every item.
+          </p>
+          <button
+            className={`${styles.homepage.button} mt-4 transition-transform duration-200`}
+          >
+            Shop Now
+          </button>
+        </div>
+      </motion.div>
+
+      {/* Filter and Stats Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="flex flex-wrap justify-between items-center bg-white rounded-lg p-4 shadow-sm border"
+      >
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
+            <Filter className="w-4 h-4 text-gray-600" />
+            <span className="text-sm font-medium text-gray-700">
+              Showing {displayData.length} of {totalItems} products
+            </span>
+          </div>
+        </div>
+        <div className="text-sm text-gray-600">
+          Page {currentPage} of {totalPages}
+        </div>
       </motion.div>
 
       {/* Products Grid */}
@@ -53,43 +96,82 @@ export const HomePage: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-white rounded-lg shadow-sm border p-6"
+        className="relative"
       >
-        <div className="text-blue-700 text-lg font-bold mb-4">Products List</div>
         {displayData.length === 0 && !loading ? (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No products found</p>
+          <div className="text-center py-20 bg-white rounded-lg shadow-sm">
+            <div className="space-y-4">
+              <ShoppingCart className="w-16 h-16 text-gray-300 mx-auto" />
+              <p className="text-xl text-gray-500">No products found</p>
+              <p className="text-gray-400">
+                Try adjusting your search criteria
+              </p>
+            </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+          <div className={styles.homepage.grid}>
             {displayData.map((product, index) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 overflow-hidden"
+                className={`group transition-all duration-300 overflow-hidden ${styles.card.container}`}
               >
-                <div className="aspect-square p-4 bg-gray-50">
+                {/* Product Image */}
+                <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 p-4">
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain transition-transform duration-300"
                   />
+
+                  {/* Rating Badge */}
+                  <div className="absolute top-2 left-2 bg-yellow-400 text-white px-2 py-1 text-xs font-bold rounded-md flex items-center space-x-1">
+                    <Star className="w-3 h-3 fill-current" />
+                    <span>{(Math.random() * 2 + 3).toFixed(1)}</span>
+                  </div>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 line-clamp-2 text-gray-800">
-                    {product.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                    {product.description}
-                  </p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xl font-bold text-blue-600">
-                      ${product.price.toFixed(2)}
-                    </span>
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors text-sm font-medium">
-                      View Details
+
+                {/* Product Info */}
+                <div className={styles.card.textContainer}>
+                  <div className="space-y-2">
+                    <h3
+                      className={`${styles.card.title} line-clamp-2 transition-colors`}
+                    >
+                      {product.title}
+                    </h3>
+                    <p className={`${styles.card.description} line-clamp-2`}>
+                      {product.description}
+                    </p>
+                  </div>
+
+                  {/* Price and Category */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className={styles.card.price}>
+                        ${product.price.toFixed(2)}
+                      </span>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full capitalize">
+                        {product.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex space-x-2 pt-2">
+                    <button
+                      onClick={() => handleViewProduct(product.id)}
+                      className="flex-1 bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-medium flex items-center justify-center space-x-1"
+                    >
+                      <Eye className="w-4 h-4" />
+                      <span>View</span>
+                    </button>
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      className="bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-medium flex items-center justify-center"
+                    >
+                      <ShoppingCart className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -100,10 +182,12 @@ export const HomePage: React.FC = () => {
 
         {/* Loading Overlay */}
         {loading && displayData.length > 0 && (
-          <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
-            <div className="flex items-center gap-3 text-blue-600">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-              <span className="font-medium">Loading...</span>
+          <div className="absolute inset-0 bg-white bg-opacity-90 backdrop-blur-sm flex items-center justify-center rounded-lg">
+            <div className="flex flex-col items-center space-y-3">
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
+              <span className="font-medium text-gray-700">
+                Loading more products...
+              </span>
             </div>
           </div>
         )}
