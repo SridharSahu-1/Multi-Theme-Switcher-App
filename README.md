@@ -5,7 +5,57 @@
 ## 🎨 Overview
 A sophisticated multi-theme React application that demonstrates advanced theming capabilities with complete UI transformation. This project showcases not just color changes, but comprehensive layout, typography, and component restructuring across three distinct themes. Built with modern React 19, TypeScript, Redux Toolkit, and enhanced with smooth Framer Motion animations.
 
-**🔗 Live Demo**: [https://multi-theme-switcher-app-pied.vercel.app/home](https://multi-theme-switcher-app-pied.vercel.app/home)
+**🔗 Live Demo**: [https://multi-theme-switcher-app-cyan.vercel.app/home](https://multi-theme-switcher-app-cyan.vercel.app/home)
+
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18+ recommended)
+- npm or yarn package manager
+- Firebase project for authentication
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/SridharSahu-1/Multi-Theme-Switcher-App.git
+   cd Multi-Theme
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   Create a `.env` file in the root directory:
+   ```env
+   VITE_FIREBASE_API_KEY=your_firebase_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+   VITE_FIREBASE_PROJECT_ID=your_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   VITE_FIREBASE_APP_ID=your_app_id
+   ```
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to `http://localhost:5173`
+
+### Building for Production
+
+```bash
+# Build the application
+npm run build
+
+# Preview the production build
+npm run preview
+```
 
 ## 🌟 Key Highlights
 
@@ -83,55 +133,6 @@ src/
 │   └── auth.ts         # Authentication helpers
 └── models/              # TypeScript type definitions
     └── Product.ts      # Product interface
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v18+ recommended)
-- npm or yarn package manager
-- Firebase project for authentication
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/SridharSahu-1/Multi-Theme-Switcher-App.git
-   cd Multi-Theme
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Environment Setup**
-   Create a `.env` file in the root directory:
-   ```env
-   VITE_FIREBASE_API_KEY=your_firebase_api_key
-   VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-   VITE_FIREBASE_PROJECT_ID=your_project_id
-   VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   VITE_FIREBASE_APP_ID=your_app_id
-   ```
-
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
-
-5. **Open your browser**
-   Navigate to `http://localhost:5173`
-
-### Building for Production
-
-```bash
-# Build the application
-npm run build
-
-# Preview the production build
-npm run preview
 ```
 
 ## 🎨 Theme System
