@@ -19,12 +19,11 @@ const navigationSlice = createSlice({
     goTo: (state, action: PayloadAction<Page>) => {
       state.current = action.payload;
     },
-    goToProduct: (state, action: PayloadAction<number>) => {
-      state.current = 'product';
+    setSelectedProduct: (state, action: PayloadAction<number>) => {
       state.selectedProductId = action.payload;
     },
   },
 });
 
-export const { goTo, goToProduct } = navigationSlice.actions;
+export const { goTo, setSelectedProduct } = navigationSlice.actions;
 export default navigationSlice.reducer;
