@@ -219,12 +219,6 @@ Key responsive features:
 - Consistent code formatting
 - Component prop validation
 
-### Performance Optimization
-- Code splitting with manual chunks
-- Lazy loading of routes and components
-- Image optimization
-- Bundle size optimization
-
 ### Environment Variables
 Ensure all required environment variables are set in your deployment platform:
 - Firebase configuration variables
