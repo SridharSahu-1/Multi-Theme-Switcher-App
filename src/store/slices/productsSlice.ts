@@ -4,19 +4,13 @@ import type { Product } from "../../models/Product";
 interface ProductsState {
   products: Product[];
   loading: boolean;
-  loadingMore: boolean;
   error: string | null;
-  hasMore: boolean;
-  page: number;
 }
 
 const initialState: ProductsState = {
   products: [],
   loading: false,
-  loadingMore: false,
   error: null,
-  hasMore: true,
-  page: 1,
 };
 
 export const fetchProducts = createAsyncThunk("products/fetch", async () => {
