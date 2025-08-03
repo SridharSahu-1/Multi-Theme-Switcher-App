@@ -5,7 +5,7 @@
 ## 🎨 Overview
 A sophisticated multi-theme React application that demonstrates advanced theming capabilities with complete UI transformation. This project showcases not just color changes, but comprehensive layout, typography, and component restructuring across three distinct themes. Built with modern React 19, TypeScript, Redux Toolkit, and enhanced with smooth Framer Motion animations.
 
-**🔗 Live Demo**: [https://multi-theme-switcher.vercel.app](https://multi-theme-switcher.vercel.app) *(if deployed)*
+**🔗 Live Demo**: [https://multi-theme-switcher-app-pied.vercel.app/home](https://multi-theme-switcher-app-pied.vercel.app/home)
 
 ## 🌟 Key Highlights
 
